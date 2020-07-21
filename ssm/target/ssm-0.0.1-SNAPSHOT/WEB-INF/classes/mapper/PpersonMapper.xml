@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.PpersonMapper">
+  
+  <select id="findPageAll" parameterType="ppersonVo" resultType="ppersonVo">
+  	SELECT * from p_person p,p_company c 
+  	<where>
+  	 p.company_id = c.company_id
+		<if test="pName != null and pName != ''">
+			and p_name like '%${pName}%'
+		</if>
+		<if test="companyId != null and companyId != 0">
+			and p.company_id = #{companyId}
+		</if>
+		
+		  	
+  	</where>
+  	
+  </select>
+  
+</mapper>

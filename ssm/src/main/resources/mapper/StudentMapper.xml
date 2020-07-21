@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.StudentMapper">
+	<select id="findPageAll" resultType="studentVo" parameterType="studentVo">
+		select s.*,c.name as cname from student s,course c
+		<where>
+			s.courseid = c.id
+			<if test="name != null and name != ''">
+				and s.name like '%${name}%'
+			</if>
+			<if test="grade != null and grade != 0">
+				and s.grade = #{grade}
+			</if>
+			<if test="entrytime != null">
+				and s.entrytime = #{entrytime}
+			</if>
+		
+		
+		</where>
+	</select>
+
+</mapper>

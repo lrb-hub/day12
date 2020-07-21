@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.ContentMapper">
+ 	
+ 	<select id="findPageinfo" parameterType="contentVo" resultType="contentVo">
+ 		SELECT c.*,g.categoryname as categoryname,g.createtime as createtime1,g.status as status1 from content c,contentcategory g WHERE c.contentcategoryId = g.contentCategoryId
+ 	</select>
+</mapper>

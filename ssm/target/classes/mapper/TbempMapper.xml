@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.TbempMapper">
+	<select id="findPage" parameterType="empVo" resultType="empVo">
+  	SELECT e.*,d.name as dname from tb_emp e,dept d  
+  		<where>
+  			e.tb_emp_did = d.id
+  			<if test="tbEmpName!= '' and tbEmpName!= null">
+  				and e.tb_emp_name like '%${tbEmpName}%'
+  			</if>
+  			<if test="tbEmpSex != null">
+  				and e.tb_emp_sex  = #{tbEmpSex}
+  			</if>
+  			<if test="age1!= null">
+  				and e.tb_emp_age &gt;= #{age1}
+  			</if>
+  			<if test="age2!= null">
+  				and e.tb_emp_age &lt;= #{age2}
+  			</if>
+  			<if test="tbEmpBirthday1!= null">
+  				and e.tb_emp_birthday &gt;= #{tbEmpBirthday1}
+  			</if>
+  			<if test="tbEmpBirthday2!= null">
+  				and e.tb_emp_birthday &lt;= #{tbEmpBirthday2}
+  			</if>
+  			<if test="tbEmpDid!= 0 and tbEmpDid != null" >
+  				and e.tb_emp_did = #{tbEmpDid}
+  			</if>
+  			
+  			
+  			
+  			
+  			
+  			
+  		</where>
+  	
+  	</select>
+</mapper>
